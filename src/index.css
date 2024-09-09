@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow: hidden;
+}
+
+.send-btn {
+  left: 280px;
+  top: 30px;
+  transform: rotate(320deg);
+}
+
+
+.box {
+  height: 280px;
+}
+
+.wave {
+  bottom: -75px;
+}
+
