@@ -34,6 +34,8 @@ function App() {
     }
   };
 
+  
+
   useEffect(() => {
     let index = 1;
     const interval = 30;

@@ -43,9 +43,12 @@ export const sendToAi = async (inputValue, setResponseText, setShowOptions) => {
             data.candidates[0].content.parts &&
             data.candidates[0].content.parts[0]
         ) {
-            const responseText =
+            let responseText =
                 data.candidates[0].content.parts[0].text ||
                 "No response text available.";
+
+            responseText = responseText.replace(/\*\*/g, '').replace(/##/g, '');
+
             messages = [
                 ...messages,
                 { sender: "user", text: inputValue },
@@ -86,32 +89,3 @@ export const loadMessagesFromLocalStorage = (setResponseText) => {
 
 
 
-
-// // open ai
-// export const sendToAi = async (inputValue, setResponseText, setShowOptions) => {
-//     setShowOptions(false);
-//     const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-//     const API_URL = `https://api.openai.com/v1/chat/completions`;
-
-//     const requestOptions = {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Authorization": `Bearer ${apiKey}`
-//         },
-//         body: JSON.stringify({
-//             model: "gpt-3.5-turbo",
-//             messages: [
-//                 { role: "user", content: inputValue }
-//             ]
-//         }),
-//     }
-
-
-//     fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
-//         console.log(data);
-
-//     }).catch((error) => {
-//         console.log(error)
-//     })
-// };
